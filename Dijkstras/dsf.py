@@ -33,8 +33,6 @@ def find_lowest_cost_node(costs):
 
 node = find_lowest_cost_node(costs)
 while node is not None:
-    import pdb
-    pdb.set_trace()
     cost = costs[node]
     neighbors = graph[node]
     for n in neighbors.keys():

@@ -7,4 +7,4 @@ def quicksort(array):
 
     return quicksort(less) + [pivot] + quicksort(greater)
 
-print(quicksort([10,5,2,3]))
+print(quicksort([5,10,2,8,5,3]))

@@ -1,9 +1,9 @@
 from collections import deque
 graph = {}
-graph['you'] = ["alice","bob","claire"]
+graph['you'] = ["alice", "bob", "claire"]
 graph['bob'] = ['anuj', 'peggy']
 graph['alice'] = ['peggy']
-graph['claire'] = ['thom','jonny']
+graph['claire'] = ['thom', 'jonny']
 graph['anuj'] = []
 graph['peggy'] = []
 graph['thom'] = []
@@ -13,8 +13,10 @@ search_queue = deque()
 search_queue += graph["you"]
 searched = []
 
+
 def person_is_seller(person):
     return person[-1] == 'm'
+
 
 while search_queue:
     person = search_queue.popleft()
@@ -24,4 +26,3 @@ while search_queue:
     else:
         search_queue += graph[person]
         searched.append(person)
-

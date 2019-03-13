@@ -11,27 +11,28 @@ and output them sequentially to files named “out_XXX.txt”, outputting only 1
 """
 
 import os
+
+
 def read_files(folder):
     file_count = 1
-    for filename in os.listdir(os.getcwd()):
+    for filename in os.listdir(folder):
         output_lines = []
-        with open(filename,'r') as opened_file:
-            while True:
+        with open(f'{folder}/{filename}', 'r') as opened_file:
+            for cnt, line in enumerate(opened_file):
                 line = opened_file.readline()
-                if not line:
-                    break
-                timestamp, user_id, resource_id = line.split('')
+                timestamp, user_id, resource_id = line.split(' ')
                 if user_id == "c90f4b45":
                     output_lines.append(line)
-                if len(output_lines) > 100:
-                    write_file(file_count, output_lines)
+                if len(output_lines) == 100:
+                    write_files(file_count, output_lines)
+                    output_lines = []
+                    file_count += 1
         if output_lines:
-            write_file(file_count, output_lines)
-    
+            write_files(file_count, output_lines)
+
 def write_files(file_count, output_lines):
     with open(f"out_{file_count}.txt", 'w') as output_file:
-        output_file.write(data)
-        file_count += 1
-        output_lines = []
-    return output_lines
-        
+        output_file.writelines(output_lines)
+
+
+read_files('/Users/wes/src/Documents')

@@ -18,8 +18,7 @@ def read_files(folder):
     for filename in os.listdir(folder):
         output_lines = []
         with open(f'{folder}/{filename}', 'r') as opened_file:
-            for cnt, line in enumerate(opened_file):
-                line = opened_file.readline()
+            for line in opened_file:
                 timestamp, user_id, resource_id = line.split(' ')
                 if user_id == "c90f4b45":
                     output_lines.append(line)
